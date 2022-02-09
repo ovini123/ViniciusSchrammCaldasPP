@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Vogais</title>
+</head>
+
+<body>
+    <h3 style="font-family: Roboto, 'Open Sans', sans-serif;
+    padding-left: 70px;">Contador de Vogais</h3>
+
+    <!-- CSS Inline Básico -->
+    <form>
+        <label style="margin-left: 70px; font-family: Roboto, 'Open Sans', sans-serif;" 
+        for="texto">Digite um texto: </label><br>
+
+        <textarea style="margin: 8px; outline-color: lightblue; 
+        column-fill: lightblue; margin-left: 70px;"
+        id="texto" name="texto" rows="5" cols="33" 
+        placeholder="Digite um texto aqui..."></textarea><br>
+
+        <button style="border-radius: 5px;
+        background-color: rgb(3, 163, 216); color: white;
+        border-color: rgb(3, 163, 216); padding: 2px 10px; margin: 10px 70px;
+        font-weight: 600; font-family: Roboto, 'Open Sans', sans-serif;" 
+        onclick=contaVogais()>ENVIAR</button>
+    </form>
+
+    <!-- Javascript -->
+    <script>
+        function contaVogais(){
+            texto = document.getElementById("texto").value;
+            // Normalizando o texto (removendo acentos)
+            texto_norm = texto.normalize("NFD").replace(/\p{Diacritic}/gu, "");
+            // Realizando a contagem de correspondências das vogais no texto
+            const contagemVogais = texto_norm.match(/[aeiou]/gi).length;
+            
+            alert(`O texto posui ${contagemVogais} vogais!`);
+        }
+    </script>
+</body>
+
+
+
+</html>
